@@ -17,12 +17,13 @@ spec:
       labels:
         app: ingress-manager
     spec:
-      # serviceAccountName: ingress-manager-sa
+      serviceAccountName: ingress-manager-sa
       imagePullSecrets:
         - name: alidockerregistryssecret
       containers:
         - image: registry.cn-hangzhou.aliyuncs.com/bournezhma/ingress-manager:1.0.0
           # image: wangtaotao2015/ingress-manager:1.0.0   # OK
+          imagePullPolicy: IfNotPresent
           name: ingress-manager
           resources: {}
 status: {}
