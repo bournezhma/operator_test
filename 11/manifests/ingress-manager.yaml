@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ingress-manager
+  name: ingress-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingress-manager
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ingress-manager
+    spec:
+      # serviceAccountName: ingress-manager-sa
+      imagePullSecrets:
+        - name: alidockerregistryssecret
+      containers:
+        - image: registry.cn-hangzhou.aliyuncs.com/bournezhma/ingress-manager:1.0.0
+          # image: wangtaotao2015/ingress-manager:1.0.0   # OK
+          name: ingress-manager
+          resources: {}
+status: {}
